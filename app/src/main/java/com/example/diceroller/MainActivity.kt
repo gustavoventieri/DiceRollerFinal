@@ -1,9 +1,12 @@
 package com.example.diceroller
 
+import android.icu.number.Precision
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
     private fun rollDice() {
 
         val randomInt = (1..6).random()
@@ -31,6 +35,17 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
         diceImage.setImageResource(drawableResource)
+        val numero: EditText = findViewById(R.id.comparar)
+        val txtResultado: TextView = findViewById(R.id.txtResultado)
+        var num: Int = numero.text.toString().toInt()
+        if(randomInt == num){
+            txtResultado.setText("You Win!")
+        }else{
+            txtResultado.setText("You Lose!")
+        }
+
+
     }
+
 
 }
